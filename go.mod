@@ -1,4 +1,4 @@
-module github.com/go_web/bubble
+module bubble
 
 go 1.15
 

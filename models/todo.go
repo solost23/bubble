@@ -1,7 +1,7 @@
 package models
 
 import (
-	"github.com/go_web/bubble/dao"
+	"bubble/dao"
 )
 
 type Todo struct {

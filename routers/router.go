@@ -1,7 +1,7 @@
 package routers
 
 import (
-	"github.com/go_web/bubble/controller"
+	"bubble/controller"
 	"github.com/gin-gonic/gin"
 )
 

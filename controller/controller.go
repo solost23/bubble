@@ -3,7 +3,7 @@ package controller
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
-	"github.com/go_web/bubble/models"
+	"bubble/models"
 	"net/http"
 )
 

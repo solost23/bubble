@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/go_web/bubble/dao"
-	"github.com/go_web/bubble/models"
-	"github.com/go_web/bubble/routers"
+	"bubble/dao"
+	"bubble/models"
+	"bubble/routers"
 
 )
 
