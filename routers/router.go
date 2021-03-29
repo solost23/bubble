@@ -1,7 +1,7 @@
 package routers
 
 import (
-	"github.com/go_web/lesson25/controller"
+	"github.com/go_web/bubble/controller"
 	"github.com/gin-gonic/gin"
 )
 
@@ -14,7 +14,7 @@ func SetRouter() *gin.Engine{
 	// 静态文件解析
 	router.Static("/static", "./static")
 
-	router.GET("/index", controller.IndexHandler)
+	router.GET("/", controller.IndexHandler)
 
 	// 待办事项
 	// v1

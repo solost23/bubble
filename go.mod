@@ -1,4 +1,4 @@
-module github.com/go_web/lesson25
+module github.com/go_web/bubble
 
 go 1.15
 
