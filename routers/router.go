@@ -3,11 +3,19 @@ package routers
 import (
 	"bubble/controller"
 	"github.com/gin-gonic/gin"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
+
+	"bubble/docs"
 )
 
+func SetRouter() *gin.Engine {
+	router := gin.New()
 
-func SetRouter() *gin.Engine{
-	router := gin.Default()
+	router.Use(gin.Logger())
+	router.Use(gin.Recovery())
+
+	docs.SwaggerInfo_swagger.Schemes = []string{"http"}
 
 	// 网页文件解析
 	router.LoadHTMLGlob("./templates/*")
@@ -30,6 +38,8 @@ func SetRouter() *gin.Engine{
 		// 删除某一个待办事项
 		v1Group.DELETE("todo/:id", controller.DeleteATodo)
 	}
+
+	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+
 	return router
 }
-

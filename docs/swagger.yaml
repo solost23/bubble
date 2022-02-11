@@ -1,0 +1,107 @@
+definitions:
+  models.Todo:
+    properties:
+      id:
+        type: integer
+      status:
+        type: boolean
+      title:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: bubble
+  title: bubble接口文档
+  version: "1.0"
+paths:
+  /:
+    get:
+      consumes:
+      - text/html
+      description: return index
+      produces:
+      - text/html
+      responses:
+        "200":
+          description: ""
+      summary: index
+      tags:
+      - index
+  /v1/todo:
+    get:
+      consumes:
+      - application/json
+      description: get All todo
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      summary: get todo
+      tags:
+      - todo
+    post:
+      consumes:
+      - application/json
+      description: create A todo
+      parameters:
+      - description: todo
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.Todo'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      summary: create todo
+      tags:
+      - todo
+  /v1/todo/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: delete A todo
+      parameters:
+      - default: "1"
+        description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      summary: delete todo
+      tags:
+      - todo
+    put:
+      consumes:
+      - application/json
+      description: update A todo
+      parameters:
+      - default: "1"
+        description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: todo
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.Todo'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      summary: update todo
+      tags:
+      - todo
+swagger: "2.0"

@@ -17,3 +17,4 @@
 #### Windows:
     bubble.exe
 启动之后，使用浏览器打开http://127.0.0.1:8080/。
+接口文档:http://127.0.0.1:8080/swagger/index.html
