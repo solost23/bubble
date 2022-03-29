@@ -1,21 +1,16 @@
 package routers
 
 import (
-	"bubble/controller"
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 
-	"bubble/docs"
+	"bubble/controller"
 )
 
 func SetRouter() *gin.Engine {
 	router := gin.New()
-
-	router.Use(gin.Logger())
-	router.Use(gin.Recovery())
-
-	docs.SwaggerInfo_swagger.Schemes = []string{"http"}
+	router.Use(gin.Logger(), gin.Recovery())
 
 	// 网页文件解析
 	router.LoadHTMLGlob("./templates/*")
@@ -40,6 +35,5 @@ func SetRouter() *gin.Engine {
 	}
 
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-
 	return router
 }

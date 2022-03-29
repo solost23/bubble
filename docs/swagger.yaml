@@ -104,4 +104,7 @@ paths:
       summary: update todo
       tags:
       - todo
+schemes:
+- http
+- https
 swagger: "2.0"

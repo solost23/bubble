@@ -1,17 +1,19 @@
 package main
 
 import (
-	"bubble/dao"
-	"bubble/models"
-	"bubble/routers"
 	"fmt"
 	"net/http"
 	"time"
+
+	"bubble/dao"
+	"bubble/models"
+	"bubble/routers"
 )
 
 // @title bubble接口文档
 // @version 1.0
 // @description bubble
+// @Schemes http https
 func main() {
 	// 创建数据库 CREATE DATABASE bubble;
 	// 连接数据库
@@ -26,7 +28,7 @@ func main() {
 	dao.DB.AutoMigrate(&models.Todo{})
 
 	server := &http.Server{
-		Addr:         "127.0.0.1:8080",
+		Addr:         "0.0.0.0:8080",
 		Handler:      routers.SetRouter(),
 		WriteTimeout: 30 * time.Second,
 		ReadTimeout:  30 * time.Second,

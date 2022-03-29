@@ -1,13 +1,14 @@
 package controller
 
 import (
-	"bubble/models"
-	"github.com/gin-gonic/gin"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
+
+	"bubble/models"
 )
 
 // @Summary index
-// @Schemes
 // @Description return index
 // @Tags index
 // @Accept html
