@@ -16,5 +16,15 @@
     ./bubble
 #### Windows:
     bubble.exe
+
+
+## docker部署
+```bash
+docker build -t bubble:v1.0.0 .
+```
+
+```bash
+docker run -d --rm -p 8080:8080 -v E:\Desktop\bubble:/app/bubble --name bubble --link MySQL:mysqldb bubble:v1.0.0
+```
 启动之后，使用浏览器打开http://127.0.0.1:8080/。
 接口文档:http://127.0.0.1:8080/swagger/index.html
