@@ -5,7 +5,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"bubble/models"
+	"bubble/model"
 )
 
 // @Summary index
@@ -23,7 +23,7 @@ func IndexHandler(c *gin.Context) {
 // @Schemes
 // @Description create A todo
 // @Tags todo
-// @Param data body models.Todo true "todo"
+// @Param data body model.Todo true "todo"
 // @Accept json
 // @Produce json
 // @Success 200
@@ -31,10 +31,10 @@ func IndexHandler(c *gin.Context) {
 func CreateATodo(c *gin.Context) {
 	// 前端页面填写待办事项 点击提交 会发请求到这里
 	// 1.获取请求数据
-	var todo models.Todo
+	var todo model.Todo
 	c.BindJSON(&todo)
 	// 2.将数据存入数据库
-	if err := models.CreateTodo(&todo); err != nil {
+	if err := model.CreateTodo(&todo); err != nil {
 		// 3.返回响应
 		c.JSON(http.StatusOK, gin.H{"err": err.Error()})
 	} else {
@@ -53,8 +53,8 @@ func CreateATodo(c *gin.Context) {
 // @Router /v1/todo [get]
 func GetAllTodo(c *gin.Context) {
 	// 1.查询todos这个表，取出所有数据
-	var todoList []models.Todo
-	if err := models.GetAllTodo(&todoList); err != nil {
+	var todoList []model.Todo
+	if err := model.GetAllTodo(&todoList); err != nil {
 		// 2.返回数据
 		c.JSON(http.StatusOK, gin.H{"msg": err.Error()})
 	} else {
@@ -68,20 +68,20 @@ func GetAllTodo(c *gin.Context) {
 // @Description update A todo
 // @Tags todo
 // @Param id path string true "id" default(1)
-// @Param data body models.Todo true "todo"
+// @Param data body model.Todo true "todo"
 // @Accept json
 // @Produce json
 // @Success 200
 // @Router /v1/todo/{id} [put]
 func UpdateATodo(c *gin.Context) {
 	id := c.Param("id")
-	todo, err := models.GetATodo(id)
+	todo, err := model.GetATodo(id)
 	if err != nil {
 		c.JSON(http.StatusOK, gin.H{"msg": err.Error()})
 		return
 	}
 	c.BindJSON(&todo) // 将JSON参数绑定到todo
-	if err = models.UpdateATodo(todo); err != nil {
+	if err = model.UpdateATodo(todo); err != nil {
 		c.JSON(http.StatusOK, gin.H{"msg": err.Error()})
 	} else {
 		c.JSON(http.StatusOK, todo)
@@ -99,7 +99,7 @@ func UpdateATodo(c *gin.Context) {
 // @Router /v1/todo/{id} [delete]
 func DeleteATodo(c *gin.Context) {
 	id := c.Param("id")
-	if err := models.DeleteATodo(id); err != nil {
+	if err := model.DeleteATodo(id); err != nil {
 		c.JSON(http.StatusOK, gin.H{"msg": err})
 	} else {
 		c.JSON(http.StatusOK, gin.H{"msg": "ok"})

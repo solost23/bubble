@@ -7,8 +7,18 @@
 ### 配置MySQL
 #### 1.在你的数据库中执行以下命令，创建本项目所用的数据库：
     CREATE DATABASE bubble DEFAULT CHARSET=utf8mb4;
-#### 2.在dao/mysql.go的dsn变量中配置数据库相关：
-    dsn := "username:password@(ip:port)/bubble"
+#### 2.在config/config.yaml中配置数据库相关：
+```yaml
+connections:
+  mysql:
+    host: mysqldb
+    user: root
+    password: 123
+    port: 3306
+    db: bubble
+    charset: utf8mb4
+```
+
 ### 编译
     go build
 ### 执行
@@ -26,5 +36,6 @@ docker build -t bubble:v1.0.0 .
 ```bash
 docker run -d --rm -p 8080:8080 -v E:\Desktop\bubble:/app/bubble --name bubble --link MySQL:mysqldb bubble:v1.0.0
 ```
+
 启动之后，使用浏览器打开http://127.0.0.1:8080/。
 接口文档:http://127.0.0.1:8080/swagger/index.html

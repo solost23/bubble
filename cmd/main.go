@@ -1,12 +1,12 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 	"time"
 
-	"bubble/dao"
-	"bubble/models"
+	"bubble/config"
+	"bubble/model"
+	"bubble/mysql"
 	"bubble/routers"
 )
 
@@ -17,18 +17,18 @@ import (
 func main() {
 	// 创建数据库 CREATE DATABASE bubble;
 	// 连接数据库
-	err := dao.InitDB()
+	err := mysql.InitDB()
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println("数据库连接成功")
-	defer dao.DB.Close()
+	defer mysql.DB.Close()
 
 	// 创建数据表
-	dao.DB.AutoMigrate(&models.Todo{})
+	mysql.DB.AutoMigrate(&model.Todo{})
 
+	serviceConfig := config.NewProject()
 	server := &http.Server{
-		Addr:         "0.0.0.0:8080",
+		Addr:         serviceConfig.ServiceAddr + ":" + serviceConfig.ServicePort,
 		Handler:      routers.SetRouter(),
 		WriteTimeout: 30 * time.Second,
 		ReadTimeout:  30 * time.Second,

@@ -74,7 +74,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.Todo"
+                            "$ref": "#/definitions/model.Todo"
                         }
                     }
                 ],
@@ -113,7 +113,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.Todo"
+                            "$ref": "#/definitions/model.Todo"
                         }
                     }
                 ],
@@ -154,7 +154,7 @@ const docTemplate = `{
         }
     },
     "definitions": {
-        "models.Todo": {
+        "model.Todo": {
             "type": "object",
             "properties": {
                 "id": {

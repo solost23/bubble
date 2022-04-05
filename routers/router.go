@@ -6,6 +6,7 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 
 	"bubble/controller"
+	_ "bubble/docs"
 )
 
 func SetRouter() *gin.Engine {

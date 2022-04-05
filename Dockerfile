@@ -13,4 +13,4 @@ WORKDIR /app/bubble
 COPY . /app/bubble
 RUN go mod tidy
 
-CMD ["go", "run", "main.go"]
+CMD ["go", "run", "cmd/main.go"]

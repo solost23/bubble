@@ -1,0 +1,13 @@
+version: 1.0
+params:
+  service_name: bubble
+  service_addr: 0.0.0.0
+  service_port: 8080
+connections:
+  mysql:
+    host: mysqldb
+    user: root
+    password: 123
+    port: 3306
+    db: bubble
+    charset: utf8mb4
